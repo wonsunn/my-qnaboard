@@ -39,16 +39,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">wsws</th>
-            <td>원선</td>
-            <td>wsws@gmail.com</td>
-        </tr>
-        <tr>
-            <th scope="row">swsw</th>
-            <td>선원</td>
-            <td>swsw@gmail.com</td>
-        </tr>
+            {{#users}}
+            <tr>
+                <th scope="row">{{userId}}</th>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+            </tr>
+            {{/users}}
         </tbody>
     </table>
 </div>
