@@ -43,7 +43,7 @@ public class UserController {
         User user = userRepository.findById(id).get();
         user.update(newUser);
         userRepository.save(user);
-        return "redirect:users";
+        return "redirect:/users";
     }
 
 }
