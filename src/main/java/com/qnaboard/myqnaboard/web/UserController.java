@@ -23,19 +23,19 @@ public class UserController {
     public String create(User user) {
         System.out.println("user : " + user);
         userRepository.save(user);
-        return "redirect:/users";
+        return "redirect:users";
     }
 
     @GetMapping("")
     public String list(Model model) {
         model.addAttribute("users", userRepository.findAll());
-        return "/user/list";
+        return "user/list";
     }
 
     @GetMapping("/{id}/form")
     public String updateForm(@PathVariable Long id, Model model) {
         model.addAttribute("user", userRepository.findById(id).get());
-        return "/user/updateForm";
+        return "user/updateForm";
     }
 
     @PutMapping("/{id}")
@@ -43,7 +43,7 @@ public class UserController {
         User user = userRepository.findById(id).get();
         user.update(newUser);
         userRepository.save(user);
-        return "redirect:/users";
+        return "redirect:users";
     }
 
 }
