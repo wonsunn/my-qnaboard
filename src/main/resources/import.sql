@@ -1,0 +1,1 @@
+INSERT INTO USER (USER_ID, PASSWORD, NAME, EMAIL) VALUES ('heidencena1', '12', '유원선', 'heidencena1@gmail.com');
