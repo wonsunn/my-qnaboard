@@ -16,7 +16,10 @@ public class Question {
     private User writer;
 
     private String title;
+
+    @Lob
     private String contents;
+
     private LocalDateTime createDate;
 
     public Question() {}
@@ -33,5 +36,14 @@ public class Question {
             return "";
         }
         return createDate.format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss"));
+    }
+
+    public void update (String updatedTitle, String updatedContents) {
+        this.title = updatedTitle;
+        this.contents = updatedContents;
+    }
+
+    public boolean isSameWriter(User loginUser) {
+        return this.writer.equals(loginUser);
     }
 }
