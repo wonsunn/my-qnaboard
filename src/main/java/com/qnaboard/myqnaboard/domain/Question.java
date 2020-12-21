@@ -3,6 +3,7 @@ package com.qnaboard.myqnaboard.domain;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Entity
 public class Question {
@@ -21,6 +22,10 @@ public class Question {
     private String contents;
 
     private LocalDateTime createDate;
+
+    @OneToMany(mappedBy="question")
+    @OrderBy("id ASC")
+    private List<Answer> answers;
 
     public Question() {}
 
