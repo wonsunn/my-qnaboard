@@ -74,7 +74,7 @@ public class QuestionController {
 
         return Result.ok();
     }
-    
+
     @PutMapping("/{id}")
     public String update(@PathVariable Long id, Model model, String title, String contents, HttpSession session) {
         Question question = questionRepository.findById(id).get();

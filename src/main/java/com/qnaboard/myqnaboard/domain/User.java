@@ -1,5 +1,8 @@
 package com.qnaboard.myqnaboard.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -8,13 +11,20 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty
     private Long id;
 
     @Column(nullable=false, length=20, unique=true)
+    @JsonProperty
     private String userId;
 
+    @JsonIgnore
     private String password;
+
+    @JsonProperty
     private String name;
+
+    @JsonProperty
     private String email;
 
     public boolean matchId(Long newId) {
@@ -27,14 +37,6 @@ public class User {
 
     public boolean matchPassword(String newPassword) {
         return password.equals(newPassword);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public void setId(Long id) { this.id = id; }
