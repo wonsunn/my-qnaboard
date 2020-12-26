@@ -29,8 +29,8 @@ function addAnswer(e) {
   });
 }
 
-function onError() {
-
+function onError(xhr, status) {
+  console.log("Error");
 }
 
 function onSuccess(data, status) {

@@ -8,12 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Entity
-public class Question {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty
-    private Long id;
+public class Question extends AbstractEntity{
 
     @ManyToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_question_writer"))
@@ -27,7 +22,8 @@ public class Question {
     @JsonProperty
     private String contents;
 
-    private LocalDateTime createDate;
+    @JsonProperty
+    private Integer countOfAnswer;
 
     @OneToMany(mappedBy="question")
     @OrderBy("id DESC")
@@ -39,14 +35,6 @@ public class Question {
         this.writer = writer;
         this.title = title;
         this.contents = contents;
-        this.createDate = LocalDateTime.now();
-    }
-
-    public String getFormattedCreateDate() {
-        if (createDate == null) {
-            return "";
-        }
-        return createDate.format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss"));
     }
 
     public void update (String updatedTitle, String updatedContents) {
@@ -56,5 +44,13 @@ public class Question {
 
     public boolean isSameWriter(User loginUser) {
         return this.writer.equals(loginUser);
+    }
+
+    public void addAnswer() {
+        this.countOfAnswer += 1;
+    }
+
+    public void deleteAnswer() {
+        this.countOfAnswer -= 1;
     }
 }
